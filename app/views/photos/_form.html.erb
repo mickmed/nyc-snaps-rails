@@ -1,0 +1,30 @@
+
+<%= form_for(@photo, html: { multipart: true }) do |f| %>
+  <% @photo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+  <%# f.collection_select(:category_id, @main_cats, :id, :name, {:prompt=>true}, {:id=>'parent'}) %>
+<div class="field">
+   <%= f.text_area :title, placeholder: "title" %>
+   <%= f.text_area :description, placeholder: "description" %>
+   <%= f.text_area :date_taken, placeholder: "date_taken" %>
+  </div>
+
+  
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+    <div class="collection-check-box">
+      <%# <%= b.check_box %> 
+      <%= b.label %>
+      <%= b.label(class: "check_box") { b.check_box(class: "check_box") } %>
+    </div>  
+  <% end %>
+    
+  <span class="picture">
+    <%= f.file_field :picture %>
+  </span>
+
+  <%= f.submit "Save", class: "btn btn-primary" %>
+
+<% end %>
+  	
+

@@ -1,0 +1,46 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+
+	<div class="container"  onclick= "untoggle()" >
+	
+		<div class="navbar-header float-left">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<%= link_to image_tag('mamAB.gif',  :alt => 'mick medium', :id => 'logo'), root_path,  onclick: "untoggle()" %>
+			<a class="navbar-brand"	href=<%= root_path %>>nyc snaps</a>
+		</div>	
+
+		<ul id="navbar" class="navbar-collapse collapse" >
+			<% @names = Category.pluck(:name).unshift('favorites', 'newest') %>
+			
+			<% @names.each do |name| %>
+				<% if name == @category %>
+					<% @class = 'category_selected' %>
+					<% @name = name + '-'+ @photos.count.to_s %>
+				<% else %>
+					<% @class = 'categories' %>
+					<% @name = name %>
+				<% end %>
+				<% if name == 'favorites' %>
+					<% @name = name %>
+				<% end %>
+						
+				<li class="<%= @class %>"><%= link_to @name, photos_path(category: name) %></li>
+			<% end %>
+		
+			<li><%= link_to "more pics", "https://www.facebook.com/NYCsnaps/", target: "_blank" %></li> 
+			<%# <span style="color:purple;cursor:pointer;cursor:hand" onclick="gallery()">gallery</span>&nbsp&nbsp&nbsp %>
+			<li><%= link_to "music", "http://mickjunior.wix.com/jukebox#!vstc17=top-10", target: "_blank" %></li>
+			<li><%= link_to "contact", "http://facebook.com/mickmedium", target: "_blank"%></li> 
+			<li id="myBtn" style="vertical-align:middle;display:inline-block;color:black;cursor:pointer;cursor:hand"><%= link_to "about", "#" %> </li> 
+		
+		</ul>
+	
+			
+	</div>
+	
+</nav>  
+    

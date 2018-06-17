@@ -1,0 +1,51 @@
+
+<div id = "photos">
+	<div class="row">
+	
+	
+	<% @photos.each do |photo| %>
+		      
+    <%# 'public'+photo.picture.url %>
+		<% if File.exist?('public'+photo.picture.url) %>
+			<% @size =  ImageSize.path('public'+ photo.picture.url).size %>
+		<% end %>
+		<% if @size %>
+			<% if @size[0]>@size[1]%>
+				<% @width = '100%' %>
+			<% else %>
+				<% @width = '65%' %>
+			<% end %>
+		<%else%>
+		<%end%>
+		<div class="menu-category list-group">
+		<span>
+      <div  class="list-group">
+        <a href = "photos/<%= photo.id %>" class="img-responsive center-bldock list-group-item" style="max-width:<%= @width%>;max-height:<%= @width %>">
+          <%= image_tag(photo.picture.thumb.url, width: '100%', alt:'') %>
+        </a>
+        <a href = "photos/<%= photo.id %>" class="img-responsive center-bldock list-group-item" style="max-width:<%= @width%>;max-height:<%= @width%>;text-align:left;background:transparent;border:none">
+          <div style="float:left">
+            <%= photo.title %>
+          </div>
+          <div style="float:right">
+            <%# <%= photo.photo_views %> 
+            <%# photo.impressionist_count(:filter=>:ip_address) %>
+            <%= photo.impressionist_count %>
+						
+          </div>
+        </a>
+      </div>
+		</span>
+		</div>	
+	
+		
+	<% end %>
+	
+	
+	</div>
+	
+	
+</div>
+<div id = "infinite-scrolling">
+	<%# <%= will_paginate @posts%>  
+	</div>

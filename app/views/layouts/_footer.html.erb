@@ -1,0 +1,34 @@
+<footer class="footer">
+  <nav>
+    <div style = "float:right">
+      <%= "#{@count} site views" %>
+      <%# "#{Impression.count} site views"%>
+    </div>
+    <div>
+      <small> the medium is the mess age</a> </small> 
+    </div>
+
+     
+     
+  
+       
+        <% @photos.each_with_index do |photo, index| %>
+          <% if @photo.id == photo["id"] %>
+            <% @index = index %>
+            <% @photo_id = photo["id"] %>
+          <% end %>
+          <%= index %>
+          <%= photo["id"] %>
+        <% end %>
+
+<%= "current index =>#{@index}" %>
+<%= "current photo =>#{@photo_id}"%>
+
+
+
+
+
+
+		
+  </nav>
+</footer>
