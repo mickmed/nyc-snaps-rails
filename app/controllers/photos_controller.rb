@@ -34,7 +34,7 @@ class PhotosController < ApplicationController
     # @og_title = @og.title
     # @og_message = Message.all.shuffle[1].message
     # @about = Message.find(1).message
-    session[:photo_flick] = @photo_flick
+    session[:photo_flick] = @photos
     session[:category] = @category
     # session[:current_page] = @photos.current_page
     # ahoy.track "Home Views", title: "Home page viewed"
@@ -55,10 +55,6 @@ class PhotosController < ApplicationController
     flicker
     
     
-   
-
-
-
 
     @photos.each_with_index do |photo, index|
       
@@ -157,7 +153,7 @@ class PhotosController < ApplicationController
   
   def favorites
     #@photos = Photo.all.joins(:impressions).group('photos.id').order('count(photos.id) desc').paginate(:page => params[:page], :per_page => 60) 
-      @photos = Photo.all
+      @photos = Photo.all.limit(12)
       #@photos = Photo.select("photos.id, title, picture, count(impressions.impressionable_id) AS listens_count").joins("LEFT OUTER JOIN impressions ON impressions.impressionable_id = photos.id AND impressions.impressionable_type = 'Photo'").group("photos.id").order("listens_count DESC").paginate(:page => params[:page], :per_page => 8)
   end
   
