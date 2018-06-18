@@ -107,8 +107,8 @@ class PhotosController < ApplicationController
   end
   
   def create
-    @photo_new = Photo.new(photo_params)
-    if @photo_new.save
+    @photo = Photo.new(photo_params)
+    if @photo.save
       flash[:info] = "saved"
       redirect_to root_url
     else
