@@ -14,6 +14,10 @@
 <div class='menu row' style="-moz-column-width:<%= @width %>;-webkit-column-width: <%= @width %>;width:85%;margin: 0 auto;padding-top:0px">
 	<span>
 		
+		<%= link_to "", photo_path(id: @prev['id']), :style => "margin-left:5px", :class=>"glyphicon glyphicon-chevron-left" %>
+		<%= @category + " " + (@index+1).to_s + "/" + @photos.count.to_s%>
+		<%= link_to "", photo_path(id: @next['id']), :style => "margin-left:5px", :class=>"glyphicon glyphicon-chevron-right" %>
+		<br><br>
 		<div style="display:inline-block">
 			<%= @photo.title %>
 			<% if @photo.date_taken %>
@@ -23,15 +27,13 @@
 			<% end %>
 			<%= image_tag @photo.picture.thumb.url, :class=>"list-group-item img-responsive center-blcock", :style => 'cursor:pointer;cursor:hand', :onclick=>"slider()", :id => 'slider', :alt =>"photo pic" %>
 			<%# "views: #{@photo.photo_views}" %>
-      <%= @photo.impressionist_count %>
+      		<%= @photo.impressionist_count %>
       
 	
 	  
-			<%= link_to "<---    ", photo_path(id: @prev['id']), :style => "margin-left:55px" %>&nbsp
-			<%= link_to "    --->", photo_path(id: @next['id']) %>
 		</div> 
 		
-		<div class="list-group-item" style="margin:20px">
+		<div class="list-group-item" style="margin:20px;">
 			<%= @photo.description%>
 		</div> 
 		<% if @current_cat %>
