@@ -24,10 +24,12 @@
   </span>
 
   <%= f.submit "Save", class: "btn btn-primary" %>
-
-  <td><%= link_to 'Destroy', photo_path(@photo),
+		
+	<% if params[:action] == "edit" %>
+    <td><%= link_to 'Destroy', photo_path(@photo),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
+  <% end %>
 
 <% end %>
   	
