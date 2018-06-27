@@ -22,7 +22,11 @@ gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 gem 'image_size'
 gem 'impressionist'
+gem 'will_paginate'
+gem 'carrierwave-google-storage'
+gem 'fastimage'
 
+gem 'google-cloud-storage', "~> 1.8", require: false
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -57,6 +61,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'sqlite3'
+  
 end
 
 group :test do

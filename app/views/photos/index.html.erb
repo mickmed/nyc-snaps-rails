@@ -1,51 +1,72 @@
 
 <div id = "photos">
-	<div class="row">
-	
-	
-	<% @photos.each do |photo| %>
-		      
-    <%# 'public'+photo.picture.url %>
-		<% if File.exist?('public'+photo.picture.url) %>
-			<% @size =  ImageSize.path('public'+ photo.picture.url).size %>
+  <div class="paginator">
+    <a href="<%= photos_path(category: @category, page: @page - 1)%>" id="prev" tabindex="0" class="glyphicon glyphicon-chevron-left"></a>
+    <%= "#{@category} #{@page}/#{(@photos_count/@photosperpage)+1} " %>
+    <a href="<%= photos_path(category: @category, page: @page + 1)%>"  id="next" tabindex="0" class="glyphicon glyphicon-chevron-right"></a> 
+  </div>	
+		<div class="row">
+			
+		<% @photos.each do |photo| %>
+			<% @size = FastImage.size(polymorphic_url(photo.image)) %>
+			
+			<% if @size %>
+				<% if @size[0]>@size[1]%>
+					<% @width = '100%' %>
+				<% else %>
+          <% @width = '75%' %>
+				<% end %>
+			<%end%>
+			<div class="col-xl-4 col-lg-4 col-md-4 hidden-sm hidden-xs">
+				<div class="menu-category list-group">
+			
+				
+						<a href = "photos/<%= photo.id %>" class="img-responsive list-group-item" style="max-width:<%= @width%>;max-height:<%= @width %>;margin:0 auto;">
+							<%= image_tag(photo.image, width: '100%', alt:'') %>
+						</a>
+						<a href = "photos/<%= photo.id %>" class="img-responsive list-group-item" style="max-width:<%= @width%>;max-height:<%= @width%>;text-align:left;background:transparent;border:none;margin:0 auto;">
+							<div style="float:left">
+								<%= photo.title %>
+							</div>
+							<div style="float:right">
+								<%# photo.impressionist_count(:filter=>:ip_address) %>
+                                <%= photo.impressionist_count %>
+								
+							</div>
+						</a>
+					
+			
+				</div>	
+			</div>
+
+			<div class="col-sm-6 col-xs-6 hidden-xl hidden-lg hidden-md">
+				<div class="menu-category list-group">
+				<span>
+				
+						<a href = "photos/<%= photo.id %>" class="img-responsive list-group-item" style="max-width:<%= @width%>;max-height:<%= @width %>;margin:0 auto;">
+							<%= image_tag(photo.image, width: '100%', alt:'', class: 'img-responsive') %>
+						</a>
+						<a href = "photos/<%= photo.id %>" class="img-responsive list-group-item" style="max-width:<%= @width%>;max-height:<%= @width%>;text-align:left;background:transparent;border:none;margin:0 auto;">
+							<div style="float:left">
+								<%= photo.title %>
+							</div>
+							<div style="float:right">
+								<%# photo.impressionist_count(:filter=>:ip_address) %>
+								<%= photo.impressionist_count %>
+								
+							</div>
+						</a>
+					
+				</span>
+				</div>	
+			</div>
+			
 		<% end %>
-		<% if @size %>
-			<% if @size[0]>@size[1]%>
-				<% @width = '100%' %>
-			<% else %>
-				<% @width = '65%' %>
-			<% end %>
-		<%else%>
-		<%end%>
-		<div class="menu-category list-group">
-		<span>
-      <div  class="list-group">
-        <a href = "photos/<%= photo.id %>" class="img-responsive center-bldock list-group-item" style="max-width:<%= @width%>;max-height:<%= @width %>">
-          <%= image_tag(photo.picture.thumb.url, width: '100%', alt:'') %>
-        </a>
-        <a href = "photos/<%= photo.id %>" class="img-responsive center-bldock list-group-item" style="max-width:<%= @width%>;max-height:<%= @width%>;text-align:left;background:transparent;border:none">
-          <div style="float:left">
-            <%= photo.title %>
-          </div>
-          <div style="float:right">
-            <%# <%= photo.photo_views %> 
-            <%# photo.impressionist_count(:filter=>:ip_address) %>
-            <%= photo.impressionist_count %>
-						
-          </div>
-        </a>
-      </div>
-		</span>
-		</div>	
-	
+
+		<%# link_to 'prev', photos_path(category: @category, page: @page - 1) %>
+		<%# link_to 'next', photos_path(category: @category, page: @page + 1) %>
 		
-	<% end %>
-	
-	
 	</div>
 	
 	
 </div>
-<div id = "infinite-scrolling">
-	<%# <%= will_paginate @posts%>  
-	</div>

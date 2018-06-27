@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "amplified-lamp-207917",
+  "private_key_id": "901d4ccc198f14b037d25380ff6f2a0a93bc5400",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC/1VsacJ0h2T2/\n4lgqAzJ5+t9j4mnzPczAq2+UpTsPWPZpTac4kSQrLaMjJ9SgKHhXL8LQErDmTvKZ\nK5W+zs9IMk2haUlSwRK3gn00cBFEG9ettTa4K1LrsOc1sADoa2LEr1awkJdi4m3X\n3yzj6qvhxO0GscipHByqJaIsNUsxxOKhFJe7Z8jvw1BsJ4rB+N7lOKe5F/Zw84YG\niuqT1VWU+C2FMQyd8bkCZxcqkJ6YSZbbq2aETw11lRoT+k8auclNDjIZm0XK1AgS\nOYd3PtEw9S5Umn0LtO9nubESdtEUUKhVChvg9KIZlmcl/nS9eWp7IRTMzhUHVl0a\nGb3MS/t3AgMBAAECggEAIn9SSk9tGnywK5UfKLL5fVEdoh9B0WHQM+fAgZkzJT/o\n1CgIRdZoDDHBUB2mEYUlmvw2SufJkykoXF4nqDAVu5R8PGYsLusUnBalwGvU1www\nvYbEh9sWptbhxVhY2XMSSG+FpevipYA1o6f5MSVu8oNQ4q7O+IZbK0foQY3170V6\naMyheALhvHDyNjQZNlC+isev3eaQRLgrM9P/SHAhFjsxPAGv3QL75/IiGf8v8dqy\nSObuR3yiQ6H2GbQAMr9mcj8qrkZdW3RRTvI5AC7F2ANmHiVwxS/5DGE6lz5cAY9i\n75SrbLlSDX8QEO8n7AaCIhAMI1uI9nnT1XbtOPwxgQKBgQDrVLOD+zpGAyD59p6U\nchO9kiahE1j4NqRSVoNnX5i6FUYQpbmrIHy6HAb4boUkx0ViwVnFA4UBQZE3VTSe\nu2/tK8+I09R6svqqFleV7tGO1hbRFJQ4ByKf7HtfD7+RdkLAlLXiKReNIcY1bwjs\n7Lg/MGs9kgFfDa8hoUH/wb+BgQKBgQDQrqLSl/ltsgDpCIS04KulpCFm1C1xm1dW\nnbPs5FXx9C7DUj65C6ksPAMV28NRZEOd4oh5V3R1hoUR5jSiWzw8eQ1KIhkKEWpr\nFlEuVXCzlV7YP2o+v5bbJMkRWJJQ/E6EK1aVBv12evR3yeVA2NYmE71oBynju0X6\nWu0qqXoI9wKBgQDq/zYUQbe7Wjx/4EoTKqeT0nJIvy1FECufHU0y2T+F8uB4l0WF\nIXfr0TkUtCi4xVUAfNvL5OvYiUUd4DQfnkTyraEcnYu8yyWM26qyyjzxSdCXENnB\n6T4mPNwl3XALLfESpm3KXgZqpKNtkGd1UB3c29j7LuW3qc6M4p8paqx2AQKBgQCe\nmRsGEppu1Cn88YxqK5ZIfUUlcXxYK0dlfNWR5Les+3fO2mLxH/uisrllk3AOG7WH\n+PLfxaes6l+YCu1VtyFAlH+VJ/T/wdyvJnbsT+MnmQ5MK2YD6ngsdPibRkVtZ1QE\n/yr+eCGKOkgyAi9J6YJXzgjVVxxvB5VXgGNfWQ52YQKBgQDos1uFm4vw+YOQ03e/\n+zwU9Of7TO2fvk5V/LC156x4S7HS4CDbMIRh1OJev7Q3lZMGM84a9owdZ7UO2VRO\nYl+cyWEeFfX/mkmt0hgR9srrQe0KLcbC6OTj82NLY9XO1sEDJHzMHvInyjDCJy05\nra1WacOdOeDmyji61zohTvz7lQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "nycsnaps@amplified-lamp-207917.iam.gserviceaccount.com",
+  "client_id": "118389305885509352078",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/nycsnaps%40amplified-lamp-207917.iam.gserviceaccount.com"
+}

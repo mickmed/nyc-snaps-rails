@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
  
  def authenticate
    @shoonga = authenticate_or_request_with_http_basic do |username, password|
-     username == "4vght" && password == "we8vds"
+     username == "we8vds" && password == "4vght"
    end
  end
   

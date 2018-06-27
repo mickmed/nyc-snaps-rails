@@ -1,50 +1,67 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     <title><%= full_title(yield(:title)) %></title>
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="fb:app_id" content="fbappid"/>
+    <meta property="og:type" content= "website" />
+    <meta property="og:image" content= <%= @og_image %> />
+    <meta property="og:title" content= "<%= @og_title %>" />
+    <meta property="og:description" content= "<%= @og_message %>" />
+	  <meta name="description" content="Mick Medium takes snap shots of NYC using a pocket camera. A new take on the east river, the manhattan sklyine, and more mundane fanfare that paints the scenery of NYC (mostly east side)">
+  	  <meta name="keywords" content="new york city photography, manhattan sklyine, mick medium photography, east river new york city, art deco, tidbits of history">
+	  <meta name="author" content="Mick Medium">
+    <link rel="image_src" href="MAM11bc.png" />
+    <%= favicon_link_tag asset_path('clear_mam_fav.png'), :rel => 'icon', :type =>  'image/png' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
     <%= render 'layouts/shim' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag :application %>
     <%= csrf_meta_tag %>
-   
-    <meta property="fb:app_id" content="fbappid"/>
-    <meta property="og:type" content= "website" />
-    <meta property="og:image" content= <%= @og_image %> />
-
-    <meta property="og:title" content= "<%= @og_title %>" />
-    <meta property="og:description" content= "<%= @og_message %>" />
-	  <meta name="description" content="Mick Medium takes snap shots of NYC using a pocket camera. A new take on the east river, the manhattan sklyine, and more mundane fanfare that paints the scenery of NYC (mostly east side)">
-  
-	  <meta name="keywords" content="new york city photography, manhattan sklyine, mick medium photography, east river new york city, art deco, tidbits of history">
-	  <meta name="author" content="Mick Medium">
-    <link rel="image_src" href="MAM11bc.png" />
-    <%= favicon_link_tag asset_path('clear_mam_fav.png'), :rel => 'icon', :type =>  'image/png' %>
+    
+    
   </head>
 
   <body>
-  		
+  	
   	<%= render 'layouts/header' %>
-    
-    <div class="main_container">
-    
-    	<span style= "color:black;float:right;font-size:8px;line-height:8px">by mick medium</span>
-      
-    	<% if session[:category] != 'favorites' %>
-        
-    		<%# <%= render 'layouts/paginator'%> 
-    	<% end %>
-        <br>   
-        <%= yield %>
-		
-		<% if params[:action] == "show" %>
-        <%= render 'layouts/footer' %> 
+    <div class="container">
+      <div class="main-container">
+        <% if params[:action] ==  'show' || params[:action] == 'index'%> 
+          <%= render 'layouts/modal'  %>
         <% end %>
-        <% if params[:action] ==  'show' || params[:action] == 'index'%>
-          <%= render 'layouts/modal' %> 
-         <% end %>
+
+        <span id="signature">by mick medium</span>       
+        <% if session[:category] != 'favorites' %>
+          <%# <%= render 'layouts/paginator'%> 
+        <% end %>
+          
+       
+        <%= yield %>
+      </div>
+    </div>
+    <div class="container">
+      <%= render 'layouts/footer' %> 
+    </div>  
+      
     </div>
   </body>
 </html>
+
+
+<%# Rails.application.routes.url_helpers.rails_blob_path(photo.image, only_path: true)
+
+polymorphic_url(photo.image)
+
+
+
+"http://localhost:3000/rails/active_storage/blobs/#{photo.image.signed_id}/#{photo.image.filename}"
+"http://localhost:3000/rails/active_storage/blobs/#{photo.image.signed_id}/#{photo.image.filename}"
+photo.image.blob.to_s
+rails_blob_url(photo.image) %>

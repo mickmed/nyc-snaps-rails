@@ -85,3 +85,24 @@ function toggleFullScreen() {
 
 }
 
+
+
+	var ENTER = 13; //This is the js keycode for ENTER
+	var left = 37;
+	var right = 39;
+
+function my_custom_keypress(e){
+	console.log('hi');
+  key = e.which;
+  if(key == left){
+	  window.location = $('#prev').attr('href');
+  }
+  else if(key == right){
+      window.location = $('#next').attr('href'); //...and sends the user to that URL.
+  }
+}
+
+$(document).on('keydown', my_custom_keypress); //when user presses a key, triggers our fxn
+
+
+

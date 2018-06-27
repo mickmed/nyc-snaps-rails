@@ -4,10 +4,13 @@
         <li><%= message %></li>
       <% end %>
   <%# f.collection_select(:category_id, @main_cats, :id, :name, {:prompt=>true}, {:id=>'parent'}) %>
-<div class="field">
-   <%= f.text_area :title, placeholder: "title" %>
-   <%= f.text_area :description, placeholder: "description" %>
-   <%= f.text_area :date_taken, placeholder: "date_taken" %>
+
+
+  <div class="field">
+    <%= f.text_area :title, placeholder: "title" %>
+    <%= f.text_area :description, placeholder: "description" %>
+    <%= f.text_area :date_taken, placeholder: "date_taken" %>
+    <%= f.file_field :image %><br>
   </div>
 
   
