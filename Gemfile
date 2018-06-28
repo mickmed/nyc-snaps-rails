@@ -25,7 +25,7 @@ gem 'impressionist'
 gem 'will_paginate'
 gem 'carrierwave-google-storage'
 gem 'fastimage'
-gem 'pg', '0.20.0'
+gem 'pg'
 gem 'google-cloud-storage', "~> 1.8", require: false
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
