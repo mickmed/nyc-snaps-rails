@@ -11,27 +11,26 @@
 
 <div class='menu row'>
 
-		<a href="<%= photo_path(id:@prev['id'])%>" id="prev" tabindex="0" class="glyphicon glyphicon-chevron-left"></a>
-		<%= @category + " " + (@index+1).to_s + "/" + @photos.count.to_s%>
-	    <a href="<%= photo_path(id:@next['id'])%>" id="next" tabindex="0" class="glyphicon glyphicon-chevron-right"></a> 
+  <a href="<%= photo_path(id:@prev['id'])%>" id="prev" tabindex="0" class="glyphicon glyphicon-chevron-left"></a>
+  <%= @category + " " + (@index+1).to_s + "/" + @photos.count.to_s%>
+  <a href="<%= photo_path(id:@next['id'])%>" id="next"  class="glyphicon glyphicon-chevron-right"></a> 
+	
 
-		
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <% if @photo.date_taken %>
+      <div style="float:right">
+        <%= @photo.date_taken.strftime("%m/%d/%y") %>
+      </div>
+    <% end %>
 
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-			<% if @photo.date_taken %>
-				<div style="float:right">
-					<%= @photo.date_taken.strftime("%m/%d/%y") %>
-				</div>
-			<% end %>
-
-			<%= image_tag @photo.image, :class=>"list-group-item img-responsive", :style=>"margin:auto auto;", :alt =>"photo pic" %>
-			<%# "views: #{@photo.photo_views}" %>
-        <%= @photo.title %>
-      	<%= @photo.impressionist_count %>
-   		
-		<div class="list-group-item" style="margin:20px;">
-			<%= @photo.description%>
-		</div> 
+    <%= image_tag @photo.image, :class=>"list-group-item img-responsive", :style=>"margin:auto auto;", :alt =>"photo pic" %>
+    <%# "views: #{@photo.photo_views}" %>
+      <%= @photo.title %>
+      <%= @photo.impressionist_count %>
+    
+  <%# <div class="list-group-item" style="margin:20px;"> %>
+    <%= @photo.description %>
+  <%# </div>  %>
 
 </div> 
 
@@ -53,7 +52,7 @@
 <script>
 $(document).ready(function () {
 			function setHeight() {
-				windowHeight = ($(window).innerHeight()) - 150;
+				windowHeight = ($(window).innerHeight()) - 100;
 				$('img').css('max-height', windowHeight);
 			};
 			setHeight();

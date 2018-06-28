@@ -48,6 +48,21 @@ class PhotosController < ApplicationController
 
   def show
   #  render plain: @photos.inspect
+   
+    
+    # @i = @photos.index(@photo)
+    # @i = @i.to_i
+    # @from_id = @photos[@i..-1]
+    # @i = @i-1
+
+    # @to_id = @photos[0..@i]
+    # @i = @i+2
+
+    # @slider_photos = @from_id + @to_id
+    
+    # @current_page = session[:current_page]
+    # @og_title = @photo.description
+    # @og_image = @photo.picture.url
     @photo = Photo.find(params[:id]) 
     
     # @next = @photo.id + 1
@@ -68,22 +83,10 @@ class PhotosController < ApplicationController
     @prev = @photos[(@index)-1]
     
     if (@next == NIL) 
-       @next = @photos[@index[0]]
+      @test = 'here';
+      @next = @photos[0]
+        
     end
-    
-    # @i = @photos.index(@photo)
-    # @i = @i.to_i
-    # @from_id = @photos[@i..-1]
-    # @i = @i-1
-
-    # @to_id = @photos[0..@i]
-    # @i = @i+2
-
-    # @slider_photos = @from_id + @to_id
-    
-    # @current_page = session[:current_page]
-    # @og_title = @photo.description
-    # @og_image = @photo.picture.url
   end
   
   def new
@@ -127,7 +130,15 @@ class PhotosController < ApplicationController
   
   
   private
-  
+
+  def set_page
+    if params[:page].to_i >= 1
+      @page = params[:page].to_i 
+    else
+      @page = 1;
+    end
+  end
+
   def photo_params
     params.require(:photo).permit(:title, :description, :picture, :date_taken, category_ids:[])
   end
@@ -144,14 +155,14 @@ class PhotosController < ApplicationController
   end
   
   def favorites
-      @photos = Photo.all.joins(:impressions).group('photos.id').order('count(photos.id) desc').limit(PHOTOS_PER_PAGE).offset((@page-1) * PHOTOS_PER_PAGE) 
-      @photos_count = Photo.all.count
+    @photos = Photo.all.joins(:impressions).group('photos.id').order('count(photos.id) desc').limit(PHOTOS_PER_PAGE).offset((@page-1) * PHOTOS_PER_PAGE) 
+    @photos_count = Photo.all.count
       #@photos = Photo.select("photos.id, title, picture, count(impressions.impressionable_id) AS listens_count").joins("LEFT OUTER JOIN impressions ON impressions.impressionable_id = photos.id AND impressions.impressionable_type = 'Photo'").group("photos.id").order("listens_count DESC").paginate(:page => params[:page], :per_page => 8)
   end
   
   def photo_category
-     @photos = Photo.where(categories: {name: params[:category]}).includes(:categories).limit(PHOTOS_PER_PAGE).offset((@page-1) * PHOTOS_PER_PAGE) 
-     @photos_count = @photos.count
+    @photos = Photo.where(categories: {name: params[:category]}).includes(:categories).limit(PHOTOS_PER_PAGE).offset((@page-1) * PHOTOS_PER_PAGE) 
+    @photos_count = @photos.count
   end
 
   def photo_flick_favorites
@@ -166,13 +177,7 @@ class PhotosController < ApplicationController
      Photo.where(categories: {name: params[:category]}).includes(:categories)
   end
 
-  def set_page
-    if params[:page].to_i >= 1
-      @page = params[:page].to_i 
-    else
-      @page = 1;
-    end
-  end
+  
 end
   def flicker
     @photos.each_with_index do |photo, index|
