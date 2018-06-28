@@ -8,9 +8,9 @@
 		<div class="row">
 			
 		<% @photos.each do |photo| %>
-			<% @size = FastImage.size(polymorphic_url(photo.image)) %>
+			<%# @size = FastImage.size(polymorphic_url(photo.image)) %>
 			
-			<<%# if @size %> %>
+		<%# if @size %> 
 				<%# if @size[0]>@size[1]%>
 					<%# @width = '100%' %>
 				<%# else %>
