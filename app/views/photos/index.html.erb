@@ -10,13 +10,13 @@
 		<% @photos.each do |photo| %>
 			<% @size = FastImage.size(polymorphic_url(photo.image)) %>
 			
-			<% if @size %>
-				<% if @size[0]>@size[1]%>
-					<% @width = '100%' %>
-				<% else %>
-          <% @width = '75%' %>
-				<% end %>
-			<%end%>
+			<<%# if @size %> %>
+				<%# if @size[0]>@size[1]%>
+					<%# @width = '100%' %>
+				<%# else %>
+          <%# @width = '75%' %>
+				<%# end %>
+			<%#end%>
 			<div class="col-xl-4 col-lg-4 col-md-4 hidden-sm hidden-xs">
 				<div class="menu-category list-group">
 			
