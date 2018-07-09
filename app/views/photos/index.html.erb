@@ -17,7 +17,7 @@
           <%# @width = '75%' %>
 				<%# end %>
 			<%#end%>
-			<div class="col-xl-4 col-lg-4 col-md-4 hidden-sm hidden-xs">
+			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-6 ">
 				<div class="menu-category list-group">
 			
 				
@@ -25,9 +25,9 @@
 							<%= image_tag(photo.image, width: '100%', alt:'') %>
 						</a>
 						<a href = "photos/<%= photo.id %>" class="img-responsive list-group-item" style="max-width:<%= @width%>;max-height:<%= @width%>;text-align:left;background:transparent;border:none;margin:0 auto;">
-							<div style="float:left">
-								<%= photo.title %>
-							</div>
+                <div style="float:left">
+                  <%= photo.title %>
+                </div>
 							<div style="float:right">
 								<%# photo.impressionist_count(:filter=>:ip_address) %>
                                 <%= photo.impressionist_count %>
@@ -39,27 +39,7 @@
 				</div>	
 			</div>
 
-			<div class="col-sm-6 col-xs-6 hidden-xl hidden-lg hidden-md">
-				<div class="menu-category list-group">
-				<span>
-				
-						<a href = "photos/<%= photo.id %>" class="img-responsive list-group-item" style="max-width:<%= @width%>;max-height:<%= @width %>;margin:0 auto;">
-							<%= image_tag(photo.image, width: '100%', alt:'', class: 'img-responsive') %>
-						</a>
-						<a href = "photos/<%= photo.id %>" class="img-responsive list-group-item" style="max-width:<%= @width%>;max-height:<%= @width%>;text-align:left;background:transparent;border:none;margin:0 auto;">
-							<div style="float:left">
-								<%= photo.title %>
-							</div>
-							<div style="float:right">
-								<%# photo.impressionist_count(:filter=>:ip_address) %>
-								<%= photo.impressionist_count %>
-								
-							</div>
-						</a>
-					
-				</span>
-				</div>	
-			</div>
+		
 			
 		<% end %>
 

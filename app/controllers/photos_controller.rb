@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
   def index
     @category = params[:category] 
     @cat_names = Category.pluck(:name)
-    @size = FastImage.size("https://www.shutterstock.com/image-photo/young-woman-holding-credit-card-using-530222965?src=6Is3hirjo2H-aaALbUfNtw-1-1")
+    
       # render :text => @cat_names  
     @photosperpage = PHOTOS_PER_PAGE     
     if @category == 'favorites'
@@ -83,7 +83,7 @@ class PhotosController < ApplicationController
     @prev = @photos[(@index)-1]
     
     if (@next == NIL) 
-      @test = 'here';
+      # @test = 'here';
       @next = @photos[0]
         
     end
