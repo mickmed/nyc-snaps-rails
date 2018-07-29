@@ -16,7 +16,7 @@
   <a href="<%= photo_path(id:@next['id'])%>" id="next"  class="glyphicon glyphicon-chevron-right"></a> 
 	
 
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 photo-column">
     <% if @photo.date_taken %>
       <div style="float:right">
         <%= @photo.date_taken.strftime("%m/%d/%y") %>
@@ -32,8 +32,64 @@
     <%= @photo.description %>
   <%# </div>  %>
 
-</div> 
 
+   <div class="left" style="height:100%;width:40%;">
+          <a href="<%= photo_path(id:@prev['id'])%>" id="prev" tabindex="0" style="display:inline;">
+          <button type="submit" style="text-align:left;padding:0px;background:transparent;height:100%;width:100%;border:0px" class="btn btn-default"><span style="font-size:40px" class="glyphicon glyphicon-chevron-left"></span>
+          </button>
+          
+        </div>
+
+        <div class="right" style="height:100%;width:40%;">
+          <a href="<%= photo_path(id:@next['id'])%>" id="next" tabindex="0" style="display:inline;">
+          <button type="submit" style="text-align:right;padding:0px;background:transparent;height:100%;width:100%;border:0px;" class="btn btn-default"><span style="font-size:40px" class="glyphicon glyphicon-chevron-right"></span>
+           </button>
+        </div>
+</div> 
+<style>
+
+.list-group-item {
+  opacity: 1;
+  display: block;
+  /* width: 100%; */
+  /* height: auto; */
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.left{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.right{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+
+}
+
+.list-group-item:hover {
+  /* opacity: 0.3; */
+}
+
+.photo-column:hover > div.left, .photo-column:hover > div.right {
+  opacity: 1;
+}
+
+
+</style>  
 </div>
 
 
