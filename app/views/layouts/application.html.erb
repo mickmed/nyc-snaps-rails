@@ -24,11 +24,12 @@
     <meta property="og:title" content= "NYC SNAPS" />
     <meta property="og:description" content= "by mick medium" />
     <% if @photo %>
-    <% @ogphoto = @photo.image %>
+    <%# rails_blob_url(@photo.image) %>
+    <% @ogphoto = rails_blob_url(@photo.image) %>
     <% else %>
     <% @ogphoto = "images/MAM11bc.png" %>
     <% end %>
-    <meta property="og:image" content= "images/MAM11bc.png" />
+    <meta property="og:image" content= "<%= @ogphoto %>" />
 
 	  <meta name="description" content="Mick Medium takes snap shots of NYC using a pocket camera. A new take on the east river, the manhattan sklyine, and more mundane fanfare that paints the scenery of NYC (mostly east side)">
   	<meta name="keywords" content="new york city photography, manhattan sklyine, mick medium photography, east river new york city, art deco, tidbits of history">
