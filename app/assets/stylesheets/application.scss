@@ -6,7 +6,7 @@
   src: url('boston_traffic.eot');
   /* IE6+ */
   src: local('boston_traffic'), local('boston_traffic'), url('boston_traffic.woff') format('woff'), /* FF3.6 */
-  url('boston_traffic.ttf') format('truetype')/* Saf3+,Chrome,Opera10+ */
+  font-url('boston_traffic.ttf') format('truetype')/* Saf3+,Chrome,Opera10+ */
   ;
 }
 
