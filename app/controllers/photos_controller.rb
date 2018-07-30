@@ -38,7 +38,7 @@ class PhotosController < ApplicationController
     end
      
     # @slider_photos = @photos
-    # @og = @photos.shuffle[1]
+      @ogimage = @photos.shuffle[1]
     # @og_image = @og.picture
     # @og_title = @og.title
     # @og_message = Message.all.shuffle[1].message
