@@ -24,7 +24,7 @@
     <meta property="og:title" content= "NYC SNAPS" />
     <meta property="og:description" content= "by mick medium" />
     <% if @photo %>
-    <%# rails_blob_url(@photo.image) %>
+    <%= rails_blob_url(@photo.image) %>
     <% @ogphoto = rails_blob_url(@photo.image) %>
     <% else %>
     <% @ogphoto = "images/MAM11bc.png" %>
