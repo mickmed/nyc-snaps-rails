@@ -1,5 +1,5 @@
 class Photo < ApplicationRecord
-    validates :title, presence: true, uniqueness: true, length: { minimum: 2 }
+    validates :title, presence: true, uniqueness: true, length: { minimum: 5 }
     is_impressionable :counter_cache => true, :column_name => :impressions_count
     #is_impressionable
     # require 'image_size'
