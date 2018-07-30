@@ -8,7 +8,7 @@ class PhotosController < ApplicationController
  
   
   def index
-    if @category
+    if params[:category]
        @category = params[:category] 
     else
       @category = 'favorites'
