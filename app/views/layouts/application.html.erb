@@ -35,7 +35,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script>
-   var url= "mickmedium.com";
+   var url= "nycsnaps.herokuapp.com";
         $.ajax({
         type: 'POST',
         url: 'https://graph.facebook.com?id='+url+'&scrape=true',
@@ -69,7 +69,7 @@
     
       <div class="container">
         <% if params[:action] ==  'show' || params[:action] == 'index'%>  
-          <%= render 'layouts/modal'  %> 
+          <%= render 'layouts/about_modal'  %> 
         <% end %>
 
             
