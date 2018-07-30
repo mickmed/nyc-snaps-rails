@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="fb:app_id" content="fbappid"/>
     <meta property="og:type" content= "website" />
-    <meta property="og:image" content= "<%= @og_image %> />"
+    <meta property="og:image" content= "<%= @og_image %>" />
     <meta property="og:title" content= "<%= @og_title %>" />
     <meta property="og:description" content= "<%= @og_message %>" />
 	  <meta name="description" content="Mick Medium takes snap shots of NYC using a pocket camera. A new take on the east river, the manhattan sklyine, and more mundane fanfare that paints the scenery of NYC (mostly east side)">
@@ -16,14 +16,21 @@
 	  <meta name="author" content="Mick Medium">
     <link rel="image_src" href="MAM11bc.png" />
     <%= favicon_link_tag asset_path('clear_mam_fav.png'), :rel => 'icon', :type =>  'image/png' %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-    <%= render 'layouts/shim' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+   <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag :application %>
     <%= csrf_meta_tag %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!-- <link href="navbar-top-fixed.css" rel="stylesheet"> -->
+    <!-- <link rel="image_src" href="MAM11bc.png" /> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <%# <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  %>
+    <%# <script type="text/javascript" src="app/assets/javascripts/TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js"></script> %>
     
     
   </head>
@@ -31,26 +38,24 @@
   <body>
   	
   	<%= render 'layouts/header' %>
-    <div class="container">
-      <div class="main-container">
-        <% if params[:action] ==  'show' || params[:action] == 'index'%> 
-          <%= render 'layouts/modal'  %>
-        <% end %>
+    
+      <div class="container">
+        <%# <% if params[:action] ==  'show' || params[:action] == 'index'%>  
+          <%# <%= render 'layouts/modal'  %> 
+        <%# <% end %> 
 
-        <span id="signature">by mick medium</span>       
-        <% if session[:category] != 'favorites' %>
-          <%# <%= render 'layouts/paginator'%> 
-        <% end %>
+            
+      
           
        
         <%= yield %>
       </div>
-    </div>
+    
     <div class="container">
       <%= render 'layouts/footer' %> 
     </div>  
       
-    </div>
+    
   </body>
 </html>
 

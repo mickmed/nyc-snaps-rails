@@ -9,46 +9,56 @@
 <%else%>
 <%end%>
 
-<div class='menu row'>
 
-  <a href="<%= photo_path(id:@prev['id'])%>" id="prev" tabindex="0" class="glyphicon glyphicon-chevron-left"></a>
-  <%= @category + " " + (@index+1).to_s + "/" + @photos.count.to_s%>
-  <a href="<%= photo_path(id:@next['id'])%>" id="next"  class="glyphicon glyphicon-chevron-right"></a> 
-	
-
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 photo-column">
-    <% if @photo.date_taken %>
-      <div style="float:right">
-        <%= @photo.date_taken.strftime("%m/%d/%y") %>
-      </div>
-    <% end %>
-
-    <%= image_tag @photo.image, :class=>"list-group-item img-responsive", :style=>"margin:auto auto;", :alt =>"photo pic" %>
-    <%# "views: #{@photo.photo_views}" %>
-      <%= @photo.title %>
-      <%= @photo.impressionist_count %>
-    
-  <%# <div class="list-group-item" style="margin:20px;"> %>
-    <%= @photo.description %>
-  <%# </div>  %>
-
-
-   <div class="left" style="height:100%;width:40%;">
-          <a href="<%= photo_path(id:@prev['id'])%>" id="prev" tabindex="0" style="display:inline;">
-          <button type="submit" style="text-align:left;padding:0px;background:transparent;height:100%;width:100%;border:0px" class="btn btn-default"><span style="font-size:40px" class="glyphicon glyphicon-chevron-left"></span>
-          </button>
+  <div class="col-12 swipe">
+    <div class="menu-category list-group" style="text-align:center;">
+      <div style="font-size:12px;margin:0 auto;padding-top:0px;padding-bottom:0px;" class="list-group-item">
+        
+        <span style="float:left;font-size:10px;">
+          <a href="<%= photo_path(id:@prev['id'])%>" id="prev" tabindex="0" class="glyphicon glyphicon-chevron-left"></a>
+          <%= @category + " " + (@index+1).to_s + "/" + @photos.count.to_s%>
+          <a href="<%= photo_path(id:@next['id'])%>" id="next"  class="glyphicon glyphicon-chevron-right"></a>
+        </span>
+        <span style="float:right;font-size:10px;">
+          <% if @photo.date_taken %>
+            <%= @photo.date_taken.strftime("%m/%d/%y") %>
+          <% end %>
+        </span>
+        
+        <div class="img-responsive">
+          <%= image_tag @photo.image, :class=>"photos_show_image", :style=>"max-width:100%" %>
+        </div>
           
+        <div class="left" style="height:100%;width:40%;">
+          <a href="<%= photo_path(id:@prev['id'])%>" id="prev" tabindex="0" style="display:inline;">
+          <button type="submit" style="text-align:left;padding:0px;background:transparent;height:100%;width:100%;border:0px" class="btn btn-default"><span style="font-size:40px" class="fa fa-chevron-left"></span>
+          </button></a>
         </div>
 
         <div class="right" style="height:100%;width:40%;">
           <a href="<%= photo_path(id:@next['id'])%>" id="next" tabindex="0" style="display:inline;">
-          <button type="submit" style="text-align:right;padding:0px;background:transparent;height:100%;width:100%;border:0px;" class="btn btn-default"><span style="font-size:40px" class="glyphicon glyphicon-chevron-right"></span>
-           </button>
+          <button type="submit" style="text-align:right;padding:0px;background:transparent;height:100%;width:100%;border:0px;" class="btn btn-default"><span style="font-size:40px" class="fa fa-chevron-right"></span>
+          </button></a>
         </div>
+
+        <span style="font-size:12px;float:left">
+          <%= @photo.title %>
+        </span>
+        <span style="font-size:12px;float:right">
+          <%= @photo.impressionist_count %>
+        </span>
+          
+
+    
+
+
+    </div>
+  </div>        
 </div> 
+
 <style>
 
-.list-group-item {
+.photos-show-image {
   opacity: 1;
   display: block;
   /* width: 100%; */
@@ -80,17 +90,17 @@
 
 }
 
-.list-group-item:hover {
+.list-group-item:hover .photos_show_image {
   /* opacity: 0.3; */
 }
 
-.photo-column:hover > div.left, .photo-column:hover > div.right {
+.list-group-item:hover > div.left, .list-group-item:hover > div.right {
   opacity: 1;
 }
 
 
 </style>  
-</div>
+
 
 
 		<% if @current_cat %>
@@ -106,41 +116,70 @@
 	
 
 <script>
-$(document).ready(function () {
-			function setHeight() {
-				windowHeight = ($(window).innerHeight()) - 100;
-				$('img').css('max-height', windowHeight);
-			};
-			setHeight();
+ ///////////SWIPE WITH ARROW KEYS/////////////////
+  var left = 37;
+  var right = 39;	
+  function my_custom_keypress(e){
 
-			$(window).resize(function () {
-				setHeight();
-			});
-		});
-
-		
-
-    </script>
-           
-
-
-
-
-<script>
-	var ENTER = 13; //This is the js keycode for ENTER
-	var left = 37;
-	var right = 39;
-
-function my_custom_keypress(e){
-	console.log('hi');
-  key = e.which;
-  if(key == left){
-	  window.location = $('#prev').attr('href');
+    key = e.which;
+    if(key === left){
+      console.log('left');
+      //  (function () {$('#prev').trigger('click');})();
+    window.location = $('#prev').attr('href');
+    }
+    else if(key === right){
+      console.log('right');
+      // (function () {$('#next').submit();})();
+       window.location = $('#next').attr('href'); //...and sends the user to that URL.
+    }
   }
-  else if(key == right){
-      window.location = $('#next').attr('href'); //...and sends the user to that URL.
-  }
-}
+  $(document).on('keydown', my_custom_keypress); //when user presses a key, triggers our fxn
 
-$(document).on('keydown', my_custom_keypress); //when user presses a key, triggers our fxn
+
+  
+
+
+
+  /////////////////////SWIPE WITH FINGER///////////////////////
+    $(function() {      
+    //Enable swiping...
+    $(".swipe").swipe( {
+      //Generic swipe handler for all directions
+      swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+        // $(this).text("You swiped " + direction );
+        
+
+        if(direction === 'left'){
+          console.log(direction);  
+          window.location = $('#prev').attr('href'); 
+        }
+
+
+        if(direction === 'right'){
+          console.log(direction);  
+          window.location = $('#next').attr('href'); 
+        }
+      },
+      //Default is 75px, set to 0 for demo so any distance triggers swipe
+        threshold:0
+    });
+  });
+
+
+  ///////////////RESPONSIVE PAGE HEIGHT///////////////////////
+
+  $(document).ready(function () {
+    function setHeight() {
+      windowHeight = ($(window).innerHeight()) - 90;
+      $('.list-group-item img').css('max-height', windowHeight);
+    };
+    setHeight();
+
+    $(window).resize(function () {
+      setHeight();
+    });
+  });
+
 </script>
+
+

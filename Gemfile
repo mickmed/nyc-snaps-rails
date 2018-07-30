@@ -16,13 +16,13 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 gem 'image_size'
 gem 'impressionist'
-gem 'will_paginate'
+# gem 'will_paginate'
 gem 'carrierwave-google-storage'
 gem 'fastimage'
 gem 'pg'

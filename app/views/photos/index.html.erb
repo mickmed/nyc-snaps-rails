@@ -1,52 +1,73 @@
 
-<div id = "photos">
-  <div class="paginator">
-    <a href="<%= photos_path(category: @category, page: @page - 1)%>" id="prev" tabindex="0" class="glyphicon glyphicon-chevron-left"></a>
-    <%= "#{@category} #{@page}/#{(@photos_count/@photosperpage)+1} " %>
-    <a href="<%= photos_path(category: @category, page: @page + 1)%>"  id="next" tabindex="0" class="glyphicon glyphicon-chevron-right"></a> 
-  </div>	
-		<div class="row">
-			
-		<% @photos.each do |photo| %>
-			<%# @size = FastImage.size(polymorphic_url(photo.image)) %>
-			
-		<%# if @size %> 
-				<%# if @size[0]>@size[1]%>
-					<%# @width = '100%' %>
-				<%# else %>
-          <%# @width = '75%' %>
-				<%# end %>
-			<%#end%>
-			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-6 ">
-				<div class="menu-category list-group">
-			
-				
-						<a href = "photos/<%= photo.id %>" class="img-responsive list-group-item" style="max-width:<%= @width%>;max-height:<%= @width %>;margin:0 auto;">
-							<%= image_tag(photo.image, width: '100%', alt:'') %>
-						</a>
-						<a href = "photos/<%= photo.id %>" class="img-responsive list-group-item" style="max-width:<%= @width%>;max-height:<%= @width%>;text-align:left;background:transparent;border:none;margin:0 auto;">
-                <div style="float:left">
-                  <%= photo.title %>
-                </div>
-							<div style="float:right">
-								<%# photo.impressionist_count(:filter=>:ip_address) %>
-                                <%= photo.impressionist_count %>
-								
-							</div>
-						</a>
-					
-			
-				</div>	
-			</div>
+<div class="paginator" style="font-size:12px;padding-top:4px;">
+  <a href="<%= photos_path(category: @category, page: @page - 1)%>" id="prev" tabindex="0" class="fa fa-chevron-left" style="font-size:20px;padding:0px 5px;"></a>
+  <%= "#{@category} #{@page}/#{(@photos_count/@photosperpage)+1} " %>
+  <a href="<%= photos_path(category: @category, page: @page + 1)%>"  id="next" tabindex="0" class="fa fa-chevron-right" style="font-size:20px;padding:0px 5px;"></a> 
+</div>	
+  
+  
+  
+  
 
-		
-			
-		<% end %>
+  
+  
+  
+   
+  
+  
+<div class="row swipe">
+  <% @photos.each do |photo| %>
+    <% @size = FastImage.size(polymorphic_url(photo.image)) %>
+      
+    <% if @size %> 
+      <% if @size[0]>@size[1]%>
+        <% @width = '100%' %>
+      <% else %>
+        <% @width = '75%' %>
+      <% end %>
+    <% end %>
+    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12" style="margin:20px 0px">
+      <div class="menu-category list-group"  style="margin:0 auto;width:<%= @width %>">
+    
+        <a href = "photos/<%= photo.id %>">
+          <button type="submit" class="img-responsive list-group-item" style="padding-bottom:0px;height:100%;">
+            <%= image_tag(photo.image, width: '100%', alt:'') %>
+            <div style="float:left;font-size:12px">
+              <%= photo.title %>
+            </div>
+            <div style="float:right;font-size:12px">
+              <%= photo.impressionist_count %>
+            </div>
+          </button>
+        </a>
+      </div>
+    </div>	
+  <% end %>
+</div> 
 
-		<%# link_to 'prev', photos_path(category: @category, page: @page - 1) %>
-		<%# link_to 'next', photos_path(category: @category, page: @page + 1) %>
-		
-	</div>
-	
-	
-</div>
+
+<script>
+ $(function() {      
+      //Enable swiping...
+      $(".swipe").swipe( {
+        //Generic swipe handler for all directions
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+          // $(this).text("You swiped " + direction );
+          
+
+          if(direction === 'left'){
+            console.log(direction);  
+           window.location = $('#prev').attr('href');
+          }
+
+
+          if(direction === 'right'){
+            console.log(direction);  
+           window.location = $('#next').attr('href');
+          }
+        },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+         threshold:75
+      });
+    });
+</script>
