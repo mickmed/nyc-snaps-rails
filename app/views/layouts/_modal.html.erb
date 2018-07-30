@@ -1,18 +1,18 @@
-<div id="myModal" class="modal">
+<div id="about-modal" class="about-modal">
 	<!-- Modal content -->
   	<div class="modal-content">
-    	<span class="close">×</span>
+    	<span class="close">&times;</span>
         <p><%# Message.find(1).message %></p>
-        <p>All of my photos are hand held taken with a pocket point and shoot camera. There are no modifications to them other than my logo. Some of the views are no longer available due to construction or deconstruction. Many are taken off suspension bridges while squeezing the lens between the holes in the fence, as the wind howls off the river in winter, and as the train goes past and shakes the bridge, making for a fun but often frustrating adventure. Favorite subjects are just whatever I see as I ride by but have an affinity for tug boats and art deco buildings. I don't have an iphone, just a cheap pocket camera.</p>
+        <p>All of the photos are hand held taken with a pocket point and shoot camera. There are no modifications to them other than the logo. Some of the views are no longer available due to construction or deconstruction. Many are taken off suspension bridges while squeezing the lens between the holes in the fence, as the wind howls off the river in winter, and as the train goes past and shakes the bridge, making for a fun but often frustrating adventure. Favorite subjects are just whatever I see as I ride by but have an affinity for tug boats and art deco buildings. I don't have an iphone, just a cheap pocket camera.</p>
 	    <%# image_tag @og_image, :class=>"list-group-item img-responsive center-bldock", :style => 'cursor:pointer;cursor:hand', :id => 'fullscreen', :alt =>"photo pic" %>
     </div>
 </div>
     
 <script>
-    var modal = document.getElementById('myModal');
+    var modal = document.getElementById('about-modal');
 
     // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
+    var btn = document.getElementById("about-button");
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
