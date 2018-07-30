@@ -8,7 +8,12 @@ class PhotosController < ApplicationController
  
   
   def index
-    @category = params[:category] 
+    if @category
+       @category = params[:category] 
+    else
+      @category = 'favorites'
+    end
+
     @cat_names = Category.pluck(:name)
     
       # render :text => @cat_names  
