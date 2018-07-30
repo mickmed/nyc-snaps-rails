@@ -87,6 +87,7 @@ class PhotosController < ApplicationController
       @next = @photos[0]
         
     end
+    @ogimage = rails_blob_url(@photo.image)
   end
   
   def new
