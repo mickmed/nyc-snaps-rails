@@ -6,13 +6,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="fb:app_id" content="fbappid"/>
+    
     <meta property="og:type" content= "website" />
-    <meta property="og:image" content= "<%= @og_image %>" />
-    <meta property="og:title" content= "<%= @og_title %>" />
-    <meta property="og:description" content= "<%= @og_message %>" />
+    
+    <meta property="og:title" content= "nyc snaps" />
+    <meta property="og:description" content= "by mick medium" />
+    <meta property="og:image" content= "<%= @photo.image %>" />
+
 	  <meta name="description" content="Mick Medium takes snap shots of NYC using a pocket camera. A new take on the east river, the manhattan sklyine, and more mundane fanfare that paints the scenery of NYC (mostly east side)">
-  	  <meta name="keywords" content="new york city photography, manhattan sklyine, mick medium photography, east river new york city, art deco, tidbits of history">
+  	<meta name="keywords" content="new york city photography, manhattan sklyine, mick medium photography, east river new york city, art deco, tidbits of history">
 	  <meta name="author" content="Mick Medium">
     <link rel="image_src" href="MAM11bc.png" />
     <%= favicon_link_tag asset_path('clear_mam_fav.png'), :rel => 'icon', :type =>  'image/png' %>
@@ -36,7 +38,16 @@
   </head>
 
   <body>
-  	
+  	<div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1';
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
   	<%= render 'layouts/header' %>
     
       <div class="container">
