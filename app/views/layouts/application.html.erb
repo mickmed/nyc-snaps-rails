@@ -7,16 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <script>
-   var url= "mickmedium.com";
-        $.ajax({
-        type: 'POST',
-        url: 'https://graph.facebook.com?id='+url+'&scrape=true',
-            success: function(data){
-               console.log(data);
-           }
-    });
-    </script>
+    
 
 
     <meta property="og:type" content= "website" />
@@ -30,7 +21,7 @@
     <% else %>
     <% @ogphoto = "images/MAM11bc.png" %>
     <% end %>
-    <meta property="og:image" content= "<%= @ogphoto %>" />
+    <meta property="og:image" content= "https://nycsnaps.herokuapp.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--782b83974ea156d8d452cedad4a2aae930d0b2cf/05_17_13_DSC02156_dominos_100-.jpg " />
 
 	  <meta name="description" content="Mick Medium takes snap shots of NYC using a pocket camera. A new take on the east river, the manhattan sklyine, and more mundane fanfare that paints the scenery of NYC (mostly east side)">
   	<meta name="keywords" content="new york city photography, manhattan sklyine, mick medium photography, east river new york city, art deco, tidbits of history">
@@ -45,7 +36,16 @@
     <!-- <link rel="image_src" href="MAM11bc.png" /> -->
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
- 
+    <script>
+   var url= "mickmedium.com";
+        $.ajax({
+        type: 'POST',
+        url: 'https://graph.facebook.com?id='+url+'&scrape=true',
+            success: function(data){
+               console.log(data);
+           }
+    });
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <%# <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> 
