@@ -21,7 +21,7 @@
           <% @names.each do |name| %>
             <% if name == @category %>
               <% @class = 'category_selected' %>
-              <% @name = name + '-'+ @photos.count.to_s %>
+              <% @name = name + '-'+ @photos_all_in_category.count.to_s %>
             <% else %>
               <% @class = 'categories' %>
               <% @name = name %>
