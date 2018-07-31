@@ -45,20 +45,20 @@ class PhotosController < ApplicationController
     def show
 
       @photo = Photo.find(params[:id]) 
-      @photos = session[:photo_flick]
+      @photos_all_in_category = session[:photo_flick]
       @category = session[:category]
       @count = Impression.where("action_name = 'index'").count
-      @photos.each_with_index do |photo, index|
+      @photos_all_in_category.each_with_index do |photo, index|
         "#{index}: #{photo['id']}"
       end
-      @photos.each_with_index do |photo, index|
+      @photos_all_in_category.each_with_index do |photo, index|
         if @photo.id == photo["id"]
           @index = index.to_i
         end
       end
 
-      @next = @photos[(@index)+1]
-      @prev = @photos[(@index)-1]
+      @next = @photos_all_in_category[(@index)+1]
+      @prev = @photos_all_in_category[(@index)-1]
       
       if (@next == NIL) 
         # @test = 'here';
