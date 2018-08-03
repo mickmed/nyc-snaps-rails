@@ -62,7 +62,7 @@ class PhotosController < ApplicationController
       
       if (@next == NIL) 
         # @test = 'here';
-        @next = @photos[0]
+        @next = @photos_all_in_category[0]
           
       end
       @ogimage = rails_blob_url(@photo.image)
