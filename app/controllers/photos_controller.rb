@@ -36,7 +36,10 @@ class PhotosController < ApplicationController
         @photos = Photo.where(categories: {name: params[:category]}).includes(:categories).limit(PHOTOS_PER_PAGE).offset((@page-1) * PHOTOS_PER_PAGE) 
         @photos_all_in_category = Photo.where(categories: {name: params[:category]}).includes(:categories)
       end
-      @photos_count = @photos_all_in_category
+      @photos_counts = Hash.new 0
+      @photos_all_in_category.each do |photo|
+        @photos_counts[photo] += 1
+      end
       @ogimage = @photos.shuffle[1]
       
       session[:photo_flick] = @photos_all_in_category

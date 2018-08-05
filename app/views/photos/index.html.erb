@@ -1,7 +1,7 @@
 
 <div class="paginator" style="font-size:12px;padding-top:4px;">
   <a href="<%= photos_path(category: @category, page: @page - 1)%>" id="prev" tabindex="0" class="fa fa-chevron-left" style="font-size:20px;padding:0px 5px;"></a>
-  <%= "#{@category} #{@page}/#{(@photos_count.to_f/@photosperpage).ceil} " %>
+  <%= "#{@category} #{@page}/#{(@photos_count.to_i/@photosperpage).ceil} " %>
   <a href="<%= photos_path(category: @category, page: @page + 1)%>"  id="next" tabindex="0" class="fa fa-chevron-right" style="font-size:20px;padding:0px 5px;"></a> 
 </div>	
   
