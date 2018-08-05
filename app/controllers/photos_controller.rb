@@ -28,7 +28,7 @@ class PhotosController < ApplicationController
       
       if @category == 'newest'
         @photos = Photo.all.includes(:categories).order('date_taken desc').limit(PHOTOS_PER_PAGE).offset((@page-1) * PHOTOS_PER_PAGE)
-        @photos_all_in_category = Photo.all.order('date_taken desc')
+        @photos_all_in_category = Photo.all.order('date_taken desc').limit(12)
       end
       
       if @category !=  'favorites' && params[:category] != 'newest'
