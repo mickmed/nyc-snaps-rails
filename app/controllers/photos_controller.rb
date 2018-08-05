@@ -115,6 +115,9 @@ class PhotosController < ApplicationController
       if params[:page].to_i >= 1
         @page = params[:page].to_i 
       end 
+      if params[:page] == 0
+        @page = 1 
+      end 
     else
         @page = 1;
     end
