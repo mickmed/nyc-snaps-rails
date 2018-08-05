@@ -111,10 +111,12 @@ class PhotosController < ApplicationController
   private
 
   def set_page
-    if params[:page].to_i >= 1
-      @page = params[:page].to_i 
+    if params[:page]
+      if params[:page].to_i >= 1
+        @page = params[:page].to_i 
+      end 
     else
-      @page = 1;
+        @page = 1;
     end
   end
 
