@@ -15,10 +15,12 @@ class PhotosController < ApplicationController
       @cat_names = Category.pluck(:name)
       @photosperpage = PHOTOS_PER_PAGE     
       @photos_count = Photo.all.count
-      if @page > (@photos_count.to_f/@photosperpage).ceil
-        @page=@page -1
-      end 
-
+      
+      
+        if @page.to_i > (@photos_count.to_f/@photosperpage).ceil
+          @page = @page - 1
+        end 
+      
       if @category == 'favorites'
         @photos = Photo.all.joins(:impressions).group('photos.id').order('count(photos.id) desc').limit(PHOTOS_PER_PAGE).offset((@page-1) * PHOTOS_PER_PAGE) 
         @photos_all_in_category = Photo.all.joins(:impressions).group('photos.id').order('count(photos.id) desc')
@@ -115,7 +117,7 @@ class PhotosController < ApplicationController
       if params[:page].to_i >= 1
         @page = params[:page].to_i 
       end 
-      if params[:page] == 0
+      if params[:page].to_i == 0
         @page = 1 
       end 
     else
