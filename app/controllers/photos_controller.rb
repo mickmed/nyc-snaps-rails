@@ -22,13 +22,13 @@ class PhotosController < ApplicationController
         end 
       
       if @category == 'favorites'
-        @photos = Photo.all.joins(:impressions).group('photos.id').order('count(photos.id) desc').limit(PHOTOS_PER_PAGE).offset((@page-1) * PHOTOS_PER_PAGE) 
+        @photos = Photo.all.joins(:impressions).group('photos.id').order('count(photos.id) desc').limit(PHOTOS_PER_PAGE).offset((@page-1) * PHOTOS_PER_PAGE).limit(12)
         @photos_all_in_category = Photo.all.joins(:impressions).group('photos.id').order('count(photos.id) desc').limit(12)
         
       end        
       
       if @category == 'newest'
-        @photos = Photo.all.includes(:categories).order('date_taken desc').limit(PHOTOS_PER_PAGE).offset((@page-1) * PHOTOS_PER_PAGE)
+        @photos = Photo.all.includes(:categories).order('date_taken desc').limit(PHOTOS_PER_PAGE).offset((@page-1) * PHOTOS_PER_PAGE).limit(12)
         @photos_all_in_category = Photo.all.order('date_taken desc').limit(12)
       end
       
@@ -54,18 +54,16 @@ class PhotosController < ApplicationController
       @photos_all_in_category = session[:photo_flick]
       @category = session[:category]
       @count = Impression.where("action_name = 'index'").count
-      @photos_all_in_category.each_with_index do |photo, index|
-        "#{index}: #{photo['id']}"
-      end
+   
       @photos_all_in_category.each_with_index do |photo, index|
         if @photo.id == photo["id"]
           @index = index.to_i
         end
       end
-
-      @next = @photos_all_in_category[(@index)+1]
-      @prev = @photos_all_in_category[(@index)-1]
-      
+     
+        @next = @photos_all_in_category[(@index)+1]
+        @prev = @photos_all_in_category[(@index)-1]
+    
       if (@next == NIL) 
         # @test = 'here';
         @next = @photos_all_in_category[0]
